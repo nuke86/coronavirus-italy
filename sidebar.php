@@ -41,12 +41,12 @@
         </a>
       </li>
 	  <li class="nav-item <?php echo $previsioniActive; ?>">
-        <a class="nav-link" href="index.php?page=previsione-casi-totali">
+        <a class="nav-link disabled" href="index.php?page=previsione-casi-totali">
           <i class="fas fa-fw fa-chart-bar"></i>
           <span>Previsioni future</span>
         </a>
       </li>
-	  <li class="nav-item <?php echo $controlliActive; ?>">
+	  <li class="nav-item <?php echo $controlliActive;?>">
         <a class="nav-link" href="index.php?page=controlli-polizia">
           <i class="fas fa-fw fa-gavel"></i>
           <span>Dati sui controlli</span>
