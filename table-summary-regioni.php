@@ -19,17 +19,17 @@ foreach ($regioniLast as $regione){
 			<td><span class=\"badge badge-info\">".number_format(getLastUpdateVaccine($i)[0][0]["dosi_somministrate"],0,',','.')."</span></td>
 			<td><span class=\"badge badge-info\">".number_format(getLastUpdateVaccine($i)[0][0]["dosi_consegnate"],0,',','.')."</span></td>
 			<td><span class=\"badge badge-info\">".getLastUpdateVaccine($i)[0][0]["percentuale_somministrazione"]."</span></td>
-			<td><span class=\"badge badge-light\">".date("d-m-Y",strtotime(date($regione->data)))."</span></td>
 		</tr>
 		";
 	$totVaccini = $totVaccini+getLastUpdateVaccine($i)[0][0]["dosi_somministrate"];
 	$totConsegnati = $totConsegnati+getLastUpdateVaccine($i)[0][0]["dosi_consegnate"];
 	$i++;
 }
-echo "Ultimo aggiornamento: <b>".$dataRegioniLast."</b> <br /> 
+echo "Ultimo aggiornamento regioni: <i>".$dataRegioniLast."</i> <br />
+Ultimo aggiornamento vaccini: <b>".date("d-m-Y",strtotime(date(getLastUpdateVaccine(0)[0][0]["ultimo_aggiornamento"])))."</b><br /> 
 Totale vaccini somministrati: <b>".number_format($totVaccini,0,',','.')."</b><br />
 Totale vaccini consegnati: <b>".number_format($totConsegnati,0,',','.')."</b><br />
-% di somministrazione: <b>".number_format((($totVaccini / $totConsegnati)*100),2,',','.')."</b><br />";
+% di somministrazione: <b>".number_format((($totVaccini / $totConsegnati)*100),2,',','.')." %</b><br />";
 
 ?>
 
