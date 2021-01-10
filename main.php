@@ -9,7 +9,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard - Monitoraggio situazione nCoV-19</h1>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard - Monitoraggio situazione Coronavirus SARS-CoV-2, vaccini</h1>
 			<h6>(Ultimo agg. <?php echo date("d M Y - H:i",strtotime(date($jsonLastUpdate[0]->data))); ?>)</h6>
           </div>
 

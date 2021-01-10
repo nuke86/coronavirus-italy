@@ -10,6 +10,27 @@ function getLastUpdate(){
 	return $data;
 }
 
+function getLastUpdateVaccine($idRegione){
+        $json = file_get_contents('https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/vaccini-summary-latest.json');
+
+        // Converts it into a PHP object
+        $dati = json_decode($json, true);
+	//$arr_data = array($json);
+	//print_r($dati);
+	//echo $dati["data"][0]["area"];
+        $arrRegione = [];
+        $i = 0;
+        foreach ($dati["data"] as $regione) {
+                if ($regione["index"] == $idRegione) {
+                        $arrRegione[] = array($regione);
+                        $i++;
+                }
+        }
+	//var_dump($arrRegione);
+        return $arrRegione;
+}
+
+
 function getWorldLastUpdate($type){
 	//$json = file_get_contents('https://us-central1-alex-redwood.cloudfunctions.net/coronavirus-api-master');
 	$json = file_get_contents('dati-json/coronavirus-api-master');
