@@ -2,12 +2,16 @@
 	// $jsonLastUpdate viene inizializzata su main.php
 	$totale_casiLast = $jsonLastUpdate[0]->totale_casi;
 	$totale_positiviLast = $jsonLastUpdate[0]->totale_positivi;
+	$totale_positiviAntigeniciLast = $jsonLastUpdate[0]->totale_positivi_test_antigenico_rapido;
+	$totale_positiviMolecolariLast = $jsonLastUpdate[0]->totale_positivi_test_molecolare;
 	$decedutiLast = $jsonLastUpdate[0]->deceduti;
 	$guaritiLast = $jsonLastUpdate[0]->dimessi_guariti;
 	$ospedalizzatiLast = $jsonLastUpdate[0]->totale_ospedalizzati;
 	$terapia_intensivaLast = $jsonLastUpdate[0]->terapia_intensiva;
 	$ricoverati_con_sintomiLast = $jsonLastUpdate[0]->ricoverati_con_sintomi;
 	$tamponiLast = $jsonLastUpdate[0]->tamponi;
+	$tamponiAntigeniciLast = $jsonLastUpdate[0]->tamponi_test_antigenico_rapido;
+	$tamponiMolecolariLast = $jsonLastUpdate[0]->tamponi_test_molecolare;
 	$casiChiusiLast = $guaritiLast+$decedutiLast;
 	
 	// Calcolo percentuali
@@ -19,6 +23,8 @@
 	$tassoDecedutiTotale = ($decedutiLast/$totale_casiLast)*100;
 	$tassoGuaritiChiusi = ($guaritiLast/$casiChiusiLast)*100;
 	$tassoDecedutiChiusi = ($decedutiLast/$casiChiusiLast)*100;
-	$tassoPositiviTamponi = ($totale_positiviLast/$tamponiLast)*100;
+	$tassoPositiviTamponi = ($totale_casiLast/$tamponiLast)*100;
+	$tassoPositiviTamponiAntigenici = ($totale_positiviAntigeniciLast/$tamponiAntigeniciLast)*100;
+	$tassoPositiviTamponiMolecolari = ($totale_positiviMolecolariLast/$tamponiMolecolariLast)*100;
 	
 ?>

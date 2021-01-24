@@ -47,7 +47,6 @@ Totale vaccini consegnati: <b>".number_format($totConsegnati,0,',','.')."</b><br
 		  <th><span class="badge badge-info">Vaccini somm.</span></th>	
 		  <th><span class="badge badge-info">Consegnati</span></th>
 		  <th><span class="badge badge-info">% somministrazione</span></th>
-		  <th><span class="badge badge-light">Data agg.</span></th>
 		</tr>
 	  </thead>
 	  <tfoot>
@@ -62,7 +61,6 @@ Totale vaccini consegnati: <b>".number_format($totConsegnati,0,',','.')."</b><br
 		  <th><span class="badge badge-warning">Vaccini somm.</span></th>
 		  <th><span class="badge badge-info">Consegnati</span></th>
                   <th><span class="badge badge-info">% somministrazione</span></th>
-		  <th><span class="badge badge-light">Data agg.</span></th>
 		</tr>
 	  </tfoot>
 	  <tbody>

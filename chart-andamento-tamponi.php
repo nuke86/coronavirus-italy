@@ -3,7 +3,15 @@
 $tamponiDate = [];
 $tamponiSerie = [];
 $tamponePrima = 0;
+$tamponeAntigenicoPrima = 0;
+$tamponeMolecolarePrima = 0;
+$positivoAntigenicoPrima = 0;
+$positivoMolecolarePrima = 0;
 $differenzeTamponi = [];
+$differenzeTamponiAntigenici = [];
+$differenzeTamponiMolecolari = [];
+$differenzePositiviAntigenici = [];
+$differenzePositiviMolecolari = [];
 $tamponiContagi = [];
 $tassoDiffTamponi = [];
 $i = 0;
@@ -14,10 +22,22 @@ foreach ($totale as $giornataTamponi) {
 	$tamponiDate[] .= date("d M",strtotime(date($giornataTamponi->data)));
 	
 	$tamponeNow = $giornataTamponi->tamponi;
+	$tamponeAntigenicoNow = $giornataTamponi->tamponi_test_antigenico_rapido;
+	$tamponeMolecolareNow = $giornataTamponi->tamponi_test_molecolare;
+	$positivoAntigenicoNow = $giornataTamponi->totale_positivi_test_antigenico_rapido;
+	$positivoMolecolareNow = $giornataTamponi->totale_positivi_test_molecolare;
 	if ($i>0){
 	$tamponePrima = $totale[$i-1]->tamponi;
+	$tamponeAntigenicoPrima = $totale[$i-1]->tamponi_test_antigenico_rapido;
+	$tamponeMolecolarePrima = $totale[$i-1]->tamponi_test_molecolare;
+	$positivoAntigenicoPrima = $totale[$i-1]->totale_positivi_test_antigenico_rapido;
+	$positivoMolecolarePrima = $totale[$i-1]->totale_positivi_test_molecolare;
 	}
 	$differenzeTamponi[] .= $tamponeNow-$tamponePrima;
+	$differenzeTamponiAntigenici[] .= $tamponeAntigenicoNow-$tamponeAntigenicoPrima;
+	$differenzeTamponiMolecolari[] .= $tamponeMolecolareNow-$tamponeMolecolarePrima;
+	$differenzePositiviAntigenici[] .= $positivoAntigenicoNow-$positivoAntigenicoPrima;
+	$differenzePositiviMolecolari[] .= $positivoMolecolareNow-$positivoMolecolarePrima;
 	$tamponiContagi[] .= $giornataTamponi->nuovi_positivi;
 	$percentTampone = ($tamponiContagi[$i]/$differenzeTamponi[$i])*100;
 	//$percentTampone = number_format($percentTampone,1,',','.');

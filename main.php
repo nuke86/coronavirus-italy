@@ -200,9 +200,14 @@
 					<div class="col-lg-6 mb-4">
 					  <div class="card bg-primary text-white shadow">
 						<div class="card-body">
-						  Tamponi totali: <?php echo number_format($jsonLastUpdate[0]->tamponi,0,',','.'); ?>
+						  <ul><li>Tamponi totali: <?php echo number_format($jsonLastUpdate[0]->tamponi,0,',','.'); ?> 
+							<br />(<?php echo number_format($jsonLastUpdate[0]->totale_casi,0,',','.'); ?> positivi)</li>
+						  <li>T. antigenici totali: <?php echo number_format($jsonLastUpdate[0]->tamponi_test_antigenico_rapido,0,',','.'); ?>
+							<br />(<?php echo number_format($jsonLastUpdate[0]->totale_positivi_test_antigenico_rapido,0,',','.'); ?> positivi)</li>
+						  <li>T. molecolari totali: <?php echo number_format($jsonLastUpdate[0]->tamponi_test_molecolare,0,',','.'); ?>
+							<br />(<?php echo number_format($jsonLastUpdate[0]->totale_positivi_test_molecolare,0,',','.'); ?> positivi)</li></ul>
 						  <div class="text-white-50">
-						  <b>Casi positivi: <?php echo number_format($tassoPositiviTamponi,1,',','.'); ?> % dei tamponi effettuati finora</b>
+						  <b>Casi positivi: <?php echo number_format($tassoPositiviTamponi,1,',','.'); ?> % dei tamponi finora</b>
 							<div class="progress mb-4">
 								<div class="progress-bar bg-warning" role="progressbar" 
 								style="width: <?php echo number_format($tassoPositiviTamponi); ?>%" 
@@ -211,18 +216,45 @@
 								</div>
 							</div>
 						  </div>
+						  <div class="text-white-50">
+                                                  <b>Positivi: <?php echo number_format($tassoPositiviTamponiAntigenici,1,',','.'); ?> % dei tamp. antigenici finora</b>
+                                                        <div class="progress mb-4">
+                                                                <div class="progress-bar bg-warning" role="progressbar" 
+                                                                style="width: <?php echo number_format($tassoPositiviTamponiAntigenici); ?>%" 
+                                                                aria-valuenow="<?php echo number_format($tassoPositiviTamponiAntigenici); ?>" 
+                                                                aria-valuemin="0" aria-valuemax="100">
+                                                                </div>
+                                                        </div>
+                                                  </div>
+						  <div class="text-white-50">
+                                                  <b>Positivi: <?php echo number_format($tassoPositiviTamponiMolecolari,1,',','.'); ?> % dei tamp. molecolari finora</b>
+                                                        <div class="progress mb-4">
+                                                                <div class="progress-bar bg-warning" role="progressbar" 
+                                                                style="width: <?php echo number_format($tassoPositiviTamponiMolecolari); ?>%" 
+                                                                aria-valuenow="<?php echo number_format($tassoPositiviTamponiMolecolari); ?>" 
+                                                                aria-valuemin="0" aria-valuemax="100">
+                                                                </div>
+                                                        </div>
+                                                  </div>
 						</div>
 					  </div>
 					</div>
 					<div class="col-lg-6 mb-4">
 					  <?php
 					  $tassoPositiviTamponiOggi = ($jsonLastUpdate[0]->nuovi_positivi/end($differenzeTamponi))*100;
+					  $tassoPositiviTamponiAntigeniciOggi = (end($differenzePositiviAntigenici)/end($differenzeTamponiAntigenici))*100;
+					  $tassoPositiviTamponiMolecolariOggi = (end($differenzePositiviMolecolari)/end($differenzeTamponiMolecolari))*100;
 					  ?>
 					  <div class="card bg-info text-white shadow">
 						<div class="card-body">
-						  Tamponi oggi: <?php echo number_format(end($differenzeTamponi),0,',','.'); ?>
+						  <ul><li>Tamponi totali oggi: <?php echo number_format(end($differenzeTamponi),0,',','.'); ?> 
+							<br />(<?php echo number_format($jsonLastUpdate[0]->nuovi_positivi,0,',','.'); ?> positivi)</li>
+						  <li>T. antigenici oggi: <?php echo number_format(end($differenzeTamponiAntigenici),0,',','.'); ?>
+							<br />(<?php echo number_format(end($differenzePositiviAntigenici),0,',','.'); ?> positivi)</li>
+						  <li>T. molecolari oggi: <?php echo number_format(end($differenzeTamponiMolecolari),0,',','.'); ?>
+							<br />(<?php echo number_format(end($differenzePositiviMolecolari),0,',','.'); ?> positivi)</li></ul>
 						  <div class="text-white-50">
-						  <b>Casi positivi: <?php echo number_format($tassoPositiviTamponiOggi,1,',','.'); ?> % dei tamponi effettuati oggi</b>
+						  <b>Casi positivi: <?php echo number_format($tassoPositiviTamponiOggi,1,',','.'); ?> % dei tamponi totali oggi</b>
 							<div class="progress mb-4">
 								<div class="progress-bar bg-warning" role="progressbar" 
 								style="width: <?php echo number_format($tassoPositiviTamponiOggi); ?>%" 
@@ -231,6 +263,27 @@
 								</div>
 							</div>
 						  </div>
+						  <div class="text-white-50">
+                                                  <b>Positivi: <?php echo number_format($tassoPositiviTamponiAntigeniciOggi,1,',','.'); ?> % dei tamponi antigenici oggi</b>
+                                                        <div class="progress mb-4">
+                                                                <div class="progress-bar bg-warning" role="progressbar" 
+                                                                style="width: <?php echo number_format($tassoPositiviTamponiAntigeniciOggi); ?>%" 
+                                                                aria-valuenow="<?php echo number_format($tassoPositiviTamponiAntigeniciOggi); ?>" 
+                                                                aria-valuemin="0" aria-valuemax="100">
+                                                                </div>
+                                                        </div>
+                                                  </div>
+						  <div class="text-white-50">
+                                                  <b>Positivi: <?php echo number_format($tassoPositiviTamponiMolecolariOggi,1,',','.'); ?> % dei tamponi molecolari oggi</b>
+                                                        <div class="progress mb-4">
+                                                                <div class="progress-bar bg-warning" role="progressbar" 
+                                                                style="width: <?php echo number_format($tassoPositiviTamponiMolecolariOggi); ?>%" 
+                                                                aria-valuenow="<?php echo number_format($tassoPositiviTamponiMolecolariOggi); ?>" 
+                                                                aria-valuemin="0" aria-valuemax="100">
+                                                                </div>
+                                                        </div>
+                                                  </div>
+						
 						</div>
 					  </div>
 					</div>
